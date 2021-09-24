@@ -37,16 +37,16 @@ def login_page():
     Returns the HTML for the login page.
     """
 
-    return _wrapper(r"""
+    return r"""
     <h1> Welcome! </h1>
 
-    <form method="POST" action="login.py">
+    <form method="POST" action="hello.py">
         <label> <span>Username:</span> <input autofocus type="text" name="username"></label> <br>
         <label> <span>Password:</span> <input type="password" name="password"></label>
 
         <button type="submit"> Login! </button>
     </form>
-    """)
+    """
 
 
 def secret_page(username=None, password=None):
@@ -56,7 +56,7 @@ def secret_page(username=None, password=None):
     if username is None or password is None:
         raise ValueError("You need to pass both username and password!")
 
-    return _wrapper("""
+    return """
     <h1> Welcome, {username}! </h1>
 
     <p> <small> Pst! I know your password is
@@ -64,7 +64,7 @@ def secret_page(username=None, password=None):
         </small>
     </p>
     """.format(username=escape(username.capitalize()),
-               password=escape(password)))
+               password=escape(password))
 
 
 def after_login_incorrect():
